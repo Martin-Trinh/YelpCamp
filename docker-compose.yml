@@ -4,21 +4,21 @@ services:
     container_name: node-app
     restart: always
     volumes:
-      - .:/app
+      - ./:/app
       - /app/node_modules
     build: .
     ports:
       - "3000:3000"
-    command: nodemon index.js
+    command: npm run dev
     depends_on:
       - mongo
   mongo:
-  container_name: mongo
-  image: mongo
-  volumes:
-    - mongo-db:/data/db
-  ports:
-    - "27017:27017"
+    container_name: mongo
+    image: mongo
+    volumes:
+      - mongo-db:/data/db
+    ports:
+      - "27017:27017"
 
 volumes:
   mongo-db:
